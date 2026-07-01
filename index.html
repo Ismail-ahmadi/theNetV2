@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Net — Every Background. One Net.</title>
+  <meta name="description" content="An online faith community where believers of every background come together to grow, connect, and encounter God. No zip code required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       SECTION VISIBILITY SYSTEM
+       To hide any section: add class "hidden" to the <section> tag
+       To show it again:    remove the "hidden" class
+       Example: <section id="values" class="hidden"> = hidden
+    ============================================================ */
+
+    :root {
+      --navy:       #0b1c2c;
+      --navy-800:   #112233;
+      --navy-700:   #1a3148;
+      --navy-600:   #243d56;
+      --teal:       #2a7fa8;
+      --teal-light: #3fa0cc;
+      --gold:       #d4a017;
+      --gold-bright:#f0bd4a;
+      --white:      #ffffff;
+      --cream:      #f0eeea;
+      --cream-dim:  #b8c4d0;
+      --muted:      #7a8fa0;
+      --font-d: 'Playfair Display', Georgia, serif;
+      --font-b: 'Inter', system-ui, sans-serif;
+      --radius: 16px;
+      --maxw: 1140px;
+    }
+
+    .hidden { display: none !important; }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-b);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--cream);
+      background: var(--navy);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-bright); }
+    h1,h2,h3,h4 {
+      font-family: var(--font-d);
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0 0 0.5em;
+    }
+    h1 { font-size: clamp(2.4rem, 6.5vw, 4.8rem); }
+    h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
+    h3 { font-size: clamp(1.15rem, 2.5vw, 1.45rem); }
+    p  { margin: 0 0 1rem; }
+
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+    }
+    .narrow { max-width: 740px; }
+    .lead { font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--cream-dim); line-height: 1.65; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.72rem; font-weight: 700; color: var(--teal-light); margin: 0 0 0.75rem; }
+    .eyebrow-gold { color: var(--gold); }
+    .muted { color: var(--muted); }
+    .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
+    .sec-head h2 { margin: 0; }
+    .pill { display: inline-block; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.64rem; font-weight: 700; color: var(--teal-light); border: 1px solid var(--teal-light); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.5rem; }
+
+    /* BUTTONS */
+    .btn { display: inline-block; font-family: var(--font-b); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.03em; padding: 0.85rem 1.8rem; border-radius: 999px; border: 2px solid transparent; cursor: pointer; transition: transform .15s, background .2s, color .2s, box-shadow .2s; text-decoration: none; }
+    .btn:hover { transform: translateY(-2px); text-decoration: none; }
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover { background: var(--gold-bright); color: var(--navy); box-shadow: 0 8px 24px rgba(212,160,23,.35); }
+    .btn-ghost { border-color: rgba(255,255,255,.3); color: var(--cream); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── HEADER ── */
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(11,28,44,.93); backdrop-filter: blur(14px) saturate(160%); border-bottom: 1px solid var(--navy-600); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 72px; position: relative; }
+    .logo-wrap { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+    .logo-wrap img { height: 52px; width: auto; mix-blend-mode: lighten; }
+    .site-nav { display: flex; align-items: center; gap: clamp(.6rem, 1.8vw, 1.5rem); }
+    .site-nav a { color: var(--cream-dim); font-weight: 500; font-size: .93rem; padding: .3rem 0; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; text-decoration: none; }
+    .site-nav a:hover { color: var(--cream); border-bottom-color: var(--gold); }
+    .nav-cta { background: var(--gold) !important; color: var(--navy) !important; font-weight: 700; border-radius: 999px; padding: .5rem 1.2rem !important; border-bottom: none !important; }
+    .nav-cta:hover { background: var(--gold-bright) !important; transform: translateY(-1px); }
+    .nav-toggle { display: none; }
+    .ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .ham span { width: 24px; height: 2px; background: var(--cream); border-radius: 2px; }
+    @media (max-width: 860px) {
+      .ham { display: flex; }
+      .site-nav { position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--navy-800); border-bottom: 1px solid var(--navy-600); max-height: 0; overflow: hidden; transition: max-height .28s ease; }
+      .site-nav a { padding: .95rem clamp(1.25rem,5vw,2.5rem); border-top: 1px solid var(--navy-600); border-bottom: none !important; }
+      .nav-cta { border-radius: 0 !important; text-align: center; }
+      .nav-toggle:checked ~ .site-nav { max-height: 500px; }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden;
+      background:
+        radial-gradient(ellipse 900px 600px at 70% 40%, rgba(42,127,168,.22) 0%, transparent 65%),
+        radial-gradient(ellipse 600px 400px at 10% 80%, rgba(212,160,23,.12) 0%, transparent 60%),
+        var(--navy);
+    }
+    .hero-net { position: absolute; inset: 0; opacity: .04; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px); background-size: 60px 60px; }
+    .hero-content { position: relative; z-index: 2; padding-block: clamp(5rem,14vw,9rem); }
+    .hero-tag { display: inline-flex; align-items: center; gap: .5rem; background: rgba(42,127,168,.18); border: 1px solid rgba(42,127,168,.4); border-radius: 999px; padding: .3rem 1rem; font-size: .75rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 1.5rem; }
+    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-light); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+    .hero-h1 { font-size: clamp(2.8rem,7.5vw,5.5rem); font-weight: 900; line-height: 1.0; margin-bottom: 1.25rem; color: var(--white); }
+    .hero-h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub { font-size: clamp(1.05rem,2.2vw,1.35rem); color: var(--cream-dim); max-width: 580px; margin-bottom: 2.5rem; line-height: 1.65; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: .5rem; color: var(--muted); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; z-index: 2; animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+    /* ── MANIFESTO ── */
+    #manifesto { background: var(--white); padding-block: clamp(4rem,10vw,7rem); overflow: hidden; }
+    .manifesto-text { font-family: var(--font-d); font-size: clamp(2.8rem,7.5vw,6.5rem); font-weight: 900; line-height: 1.02; color: var(--navy); margin: 0; }
+    .manifesto-text .t { color: var(--teal); }
+    .manifesto-text .g { color: var(--gold); }
+    .manifesto-sub { margin-top: 1.75rem; font-size: clamp(1rem,1.8vw,1.15rem); color: #4a5568; max-width: 520px; }
+
+    /* ── WHO WE ARE ── */
+    #who { background: var(--navy); padding-block: clamp(4rem,9vw,6.5rem); }
+    .who-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+    @media (min-width: 720px) { .who-grid { grid-template-columns: 1fr 1fr; } }
+    .who-text h2 { color: var(--white); margin-bottom: 1rem; }
+    .who-text p { color: var(--cream-dim); }
+    /* who image — 16/9 landscape, fills column cleanly */
+    .who-img { border-radius: var(--radius); overflow: hidden; aspect-ratio: 16/9; }
+    .who-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+    /* ── EVENTS ── */
+    #events { background: var(--navy-800); padding-block: clamp(4rem,9vw,6.5rem); }
+    /* single unified grid — all cards same layout */
+    .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+    .event-card { background: var(--navy-700); border: 1px solid var(--navy-600); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .2s ease, box-shadow .2s ease; cursor: pointer; }
+    .event-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.4); }
+    .event-card-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center; display: block; }
+    .event-card-body { padding: 1rem 1rem 1.1rem; flex: 1; display: flex; flex-direction: column; }
+    .event-card-body h3 { color: var(--white); margin: .35rem 0 .3rem; font-size: 1rem; line-height: 1.25; }
+    .event-card-meta { color: var(--muted); font-size: .82rem; margin: 0 0 .7rem; }
+    .event-card-foot { margin-top: auto; padding-top: .75rem; }
+    /* status badge tags */
+    .tag { display: inline-block; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; border-radius: 999px; padding: .2rem .65rem; margin-bottom: .4rem; }
+    .tag-coming { background: rgba(212,160,23,.15); color: var(--gold); border: 1px solid rgba(212,160,23,.45); }
+    .tag-past   { background: rgba(122,143,160,.1); color: var(--muted); border: 1px solid rgba(122,143,160,.28); }
+
+    /* ── MODAL ── */
+    .modal-bg { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(7,16,26,.85); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 1.5rem; }
+    .modal-bg.open { display: flex; }
+    .modal { background: var(--navy-800); border: 1px solid var(--navy-600); border-radius: var(--radius); max-width: 720px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2.5rem; position: relative; }
+    .modal-close { position: absolute; top: 1rem; right: 1rem; background: var(--navy-700); border: 1px solid var(--navy-600); border-radius: 50%; width: 36px; height: 36px; font-size: 1.1rem; color: var(--cream-dim); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .modal-close:hover { background: var(--navy-600); color: var(--white); }
+    .modal h2 { color: var(--white); margin-bottom: .5rem; }
+    .modal-meta { color: var(--cream-dim); font-size: .92rem; margin-bottom: 1.5rem; }
+    .modal-desc { color: var(--cream-dim); line-height: 1.7; margin-bottom: 2rem; }
+    .modal hr { border: none; border-top: 1px solid var(--navy-600); margin: 1.75rem 0; }
+    .modal h3 { color: var(--white); margin-bottom: 1.25rem; }
+
+    /* ── FORMS ── */
+    .form-grid { display: grid; gap: .9rem; }
+    .form-2col { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 560px) { .form-2col { grid-template-columns: 1fr; } }
+    .form-full { grid-column: 1/-1; }
+    .field { display: grid; gap: .3rem; }
+    .field label { font-size: .85rem; font-weight: 600; color: var(--cream-dim); }
+    .field input, .field select, .field textarea { font: inherit; font-size: .97rem; color: var(--cream); background: var(--navy); border: 1.5px solid var(--navy-600); border-radius: 10px; padding: .7rem .9rem; width: 100%; transition: border-color .15s, box-shadow .15s; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(42,127,168,.2); }
+    .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a8fa0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .radio-group { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: .2rem; }
+    .radio-opt { display: flex; align-items: center; gap: .45rem; color: var(--cream-dim); cursor: pointer; font-size: .95rem; }
+    .radio-opt input[type="radio"] { accent-color: var(--gold); width: 17px; height: 17px; }
+    .form-msg { display: none; margin-top: 1rem; padding: 1rem 1.25rem; border-radius: 10px; font-weight: 600; font-size: .95rem; }
+    .form-msg.ok { display: block; background: rgba(42,127,168,.15); border: 1px solid var(--teal); color: var(--teal-light); }
+
+    /* ── VALUES ── */
+    #values { background: var(--white); padding-block: clamp(4rem,9vw,6.5rem); }
+    #values .eyebrow { color: var(--teal); }
+    #values h2 { color: var(--navy); }
+    #values .lead { color: #4a5568; margin-bottom: 2.5rem; }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 1px; background: #e2e8f0; border: 1px solid #e2e8f0; border-radius: var(--radius); overflow: hidden; }
+    .val-item { background: var(--white); padding: 1.75rem 1.5rem; transition: background .2s; }
+    .val-item:hover { background: #f7fafc; }
+    .val-num { font-family: var(--font-d); font-size: 2.75rem; font-weight: 900; color: #e2e8f0; line-height: 1; margin-bottom: .4rem; }
+    .val-title { font-family: var(--font-d); font-size: 1rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
+    .val-title span { color: var(--teal); }
+    .val-desc { color: #4a5568; font-size: .9rem; line-height: 1.6; margin: 0; }
+
+    /* ── TESTIMONIALS ── */
+    #stories { background: var(--navy-800); padding-block: clamp(4rem,9vw,6.5rem); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1.5rem; }
+    .testimonial-card { background: var(--navy-700); border: 1px solid var(--navy-600); border-radius: var(--radius); padding: 2rem; position: relative; }
+    .testimonial-quote { font-family: var(--font-d); font-size: 5rem; line-height: .8; color: var(--gold); opacity: .25; position: absolute; top: 1rem; left: 1.5rem; user-select: none; }
+    .testimonial-text { color: var(--cream); font-size: 1.05rem; line-height: 1.7; font-style: italic; margin: 1.5rem 0 1.75rem; position: relative; z-index: 1; }
+    .testimonial-author { display: flex; align-items: center; gap: .85rem; }
+    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; color: var(--white); flex-shrink: 0; }
+    .testimonial-name { font-weight: 700; color: var(--white); font-size: .95rem; }
+    .testimonial-role { color: var(--muted); font-size: .82rem; margin-top: .1rem; }
+
+    /* ── WORSHIP ── */
+    #worship { background: var(--navy); padding-block: clamp(4rem,9vw,6.5rem); }
+    .embed-ph { border: 2px dashed var(--navy-600); border-radius: var(--radius); background: var(--navy-800); padding: 2.5rem; text-align: center; color: var(--muted); font-size: .92rem; }
+
+    /* ── PARTNERS ── */
+    #partners { background: var(--navy-800); padding-block: clamp(4rem,9vw,6.5rem); }
+    .partner-strip { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; align-items: center; }
+    .partner-strip li { color: var(--cream-dim); font-family: var(--font-d); font-size: 1.3rem; }
+
+    /* ── SIGNUP ── */
+    #signup { background: linear-gradient(135deg, var(--navy-700) 0%, var(--navy) 100%); border-top: 1px solid var(--navy-600); padding-block: clamp(4rem,9vw,6.5rem); }
+    .signup-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+    @media (min-width: 720px) { .signup-grid { grid-template-columns: 1fr 1fr; } }
+    .signup-text h2 { color: var(--white); }
+    .signup-text p { color: var(--cream-dim); }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--navy-800); border-top: 1px solid var(--navy-600); padding-top: 3.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+    @media (min-width: 720px) { .footer-grid { grid-template-columns: 1.8fr 1fr 1fr; } }
+    .footer-brand img { height: 56px; width: auto; margin-bottom: 1rem; mix-blend-mode: lighten; }
+    .footer-tagline { font-family: var(--font-d); font-style: italic; color: var(--gold); font-size: 1.05rem; margin: 0 0 .6rem; }
+    .footer-about { color: var(--cream-dim); font-size: .9rem; line-height: 1.6; margin: 0; }
+    .footer-col h4 { font-family: var(--font-b); font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; color: var(--teal-light); margin: 0 0 .9rem; }
+    .footer-col nav { display: flex; flex-direction: column; gap: .45rem; }
+    .footer-col nav a { color: var(--cream-dim); font-size: .9rem; }
+    .footer-col nav a:hover { color: var(--cream); }
+    .footer-social { display: flex; gap: .65rem; margin-top: 1.1rem; }
+    .soc-icon { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--navy-700); border: 1px solid var(--navy-600); border-radius: 50%; color: var(--cream-dim); transition: background .2s, color .2s; text-decoration: none; }
+    .soc-icon:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+    .footer-legal { border-top: 1px solid var(--navy-600); margin-top: 2.5rem; padding-block: 1.25rem; color: var(--muted); font-size: .82rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════ HEADER ══════════════════════════════════════ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo-wrap" href="#">
+      <img src="assets/the_net_logo.png" alt="The Net" />
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
+    <label for="nav-toggle" class="ham" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </label>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#events">Events</a>
+      <a href="#worship">Worship</a>
+      <a href="#stories">Stories</a>
+      <a href="#values">Our Values</a>
+      <a href="#signup" class="nav-cta">Join the Community</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 1 — HERO
+     To hide: add class="hidden" to the section tag
+══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-net" aria-hidden="true"></div>
+  <div class="container hero-content">
+    <div class="hero-tag">
+      <span class="hero-dot"></span>
+      Online · USA &amp; Beyond
+    </div>
+    <h1 class="hero-h1">
+      Every Background.<br />
+      <em>One Net.</em>
+    </h1>
+    <p class="hero-sub">
+      A high-energy online faith community where believers from every walk of life come together to grow, connect, and encounter God — no zip code required.
+    </p>
+    <div class="hero-btns">
+      <a class="btn btn-gold" href="#signup">Join the Community</a>
+      <a class="btn btn-ghost" href="#events">See What's Coming</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 2 — MANIFESTO
+     To hide: add class="hidden" to the section tag
+══════════════════════════════════════ -->
+<section id="manifesto">
+  <div class="container">
+    <p class="manifesto-text">
+      We exist to<br />
+      bring <span class="t">believers</span><br />
+      together — across<br />
+      every <span class="g">city.</span>
+    </p>
+    <p class="manifesto-sub">
+      Not built around a denomination or a doctrine checklist. Built around a shared love for God and a genuine desire to be around others who feel the same.
+    </p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 3 — WHO WE ARE
+     To hide: add class="hidden" to the section tag
+══════════════════════════════════════ -->
+<section id="who">
+  <div class="container">
+    <div class="who-grid">
+      <div class="who-text">
+        <p class="eyebrow eyebrow-gold">Who We Are</p>
+        <h2>A room where something genuinely good is happening.</h2>
+        <p class="lead" style="margin-top:.75rem;">
+          People who love God and want to be around others who do too. Different cultures, careers, and life stories all show up — and we don't ask anyone to check those at the door.
+        </p>
+        <p style="color:var(--cream-dim); margin-top:.25rem;">
+          The Net isn't a Bible study or a church service — it's a community event experience. Between gatherings, our content keeps the connection alive through real voices sharing what faith looks like in their actual lives.
+        </p>
+        <a class="btn btn-ghost" href="#signup" style="margin-top:1.5rem; display:inline-block;">Join Us</a>
+      </div>
+      <div class="who-img">
+        <img src="assets/community_online.png" alt="The Net online community — believers from every background connecting on video" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 4 — EVENTS
+     To hide: add class="hidden" to the section tag
+══════════════════════════════════════ -->
+<section id="events">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" style="margin-bottom:.3rem;">What's Happening</p>
+        <h2 style="color:var(--white); margin:0;">Events</h2>
+      </div>
+    </div>
+
+    <!-- UNIFIED GRID — upcoming + past all in one row -->
+    <div class="event-grid">
+
+      <!-- ── UPCOMING ── -->
+      <article class="event-card" onclick="openSeminarModal()">
+        <img class="event-card-img" src="assets/revelation_seminar.webp" alt="The Revelation Seminar" />
+        <div class="event-card-body">
+          <span class="tag tag-coming">Coming Soon</span>
+          <h3>The Revelation Seminar</h3>
+          <p class="event-card-meta">Saturday, July 4th · Online / Zoom</p>
+          <div class="event-card-foot">
+            <button class="btn btn-gold" style="font-size:.82rem; padding:.6rem 1.1rem;" onclick="event.stopPropagation(); openSeminarModal()">Sign Up</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── PAST ── -->
+      <article class="event-card" onclick="openEventModal('Faith Fellowship','Saturday, May 23rd · Four Fields (IP) 1–3PM · Four Fields (Online) 2–4PM · Prayer Lesson (IP) 1–3PM','A community gathering combining in-person and online sessions — Four Fields games, online fellowship, and a prayer lesson.')">
+        <img class="event-card-img" src="assets/event6.jpeg" alt="Faith Fellowship" />
+        <div class="event-card-body">
+          <span class="tag tag-past">Past</span>
+          <h3>Faith Fellowship</h3>
+          <p class="event-card-meta">Saturday, May 23rd</p>
+        </div>
+      </article>
+
+      <article class="event-card" onclick="openEventModal('Looking Soul Deep: Loving Myself Through God&#39;s Eyes','Saturday, February 15th · 2–4PM · In-Person &amp; Online · Word | Music | Fellowship','A powerful session on identity, self-worth, and what it means to see yourself the way God sees you.')">
+        <img class="event-card-img" src="assets/event5.jpeg" alt="Loving Myself Through God's Eyes" />
+        <div class="event-card-body">
+          <span class="tag tag-past">Past</span>
+          <h3>Loving Myself Through God's Eyes</h3>
+          <p class="event-card-meta">Saturday, February 15th</p>
+        </div>
+      </article>
+
+      <article class="event-card" onclick="openEventModal('Summer Sanctuary: Unlocking the Wisdom of the Bible','Friday, June 27th, 2025 · 6:30PM EST · Zoom','A Summer Sanctuary session exploring the timeless wisdom of Scripture — practical, inspiring, and grounded in the Word.')">
+        <img class="event-card-img" src="assets/event4.jpeg" alt="Summer Sanctuary" />
+        <div class="event-card-body">
+          <span class="tag tag-past">Past</span>
+          <h3>Summer Sanctuary</h3>
+          <p class="event-card-meta">Friday, June 27, 2025</p>
+        </div>
+      </article>
+
+      <article class="event-card" onclick="openEventModal('Risen &amp; Redeemed: Why is Jesus the Messiah?','Saturday, April 5 · 2–4PM EST · Online / Zoom','An Easter-season gathering asking the big question: Why is Jesus the Messiah? Scripture, discussion, and community.')">
+        <img class="event-card-img" src="assets/event3.jpeg" alt="Risen and Redeemed" />
+        <div class="event-card-body">
+          <span class="tag tag-past">Past</span>
+          <h3>Risen &amp; Redeemed</h3>
+          <p class="event-card-meta">Saturday, April 5, 2025</p>
+        </div>
+      </article>
+
+      <article class="event-card" onclick="openEventModal('Spring into Purpose: Soul Revival','Saturday, March 1, 2025 · 11AM–1PM · Zoom · Games | Fellowship | Performances','A soul revival to shake off the winter and step into your purpose with energy and community.')">
+        <img class="event-card-img" src="assets/event2.jpeg" alt="Spring into Purpose" />
+        <div class="event-card-body">
+          <span class="tag tag-past">Past</span>
+          <h3>Spring into Purpose</h3>
+          <p class="event-card-meta">Saturday, March 1, 2025</p>
+        </div>
+      </article>
+
+      <article class="event-card" onclick="openEventModal('Kingdom Come: Bible Study Series','Saturday, January 18 · 11AM–1PM EST · Zoom/Online','The Kingdom Come Bible Study Series — a deep and community-driven exploration of Scripture. Grow in the Word alongside people who are serious about their faith.')">
+        <img class="event-card-img" src="assets/event1.jpeg" alt="Kingdom Come Bible Study" />
+        <div class="event-card-body">
+          <span class="tag tag-past">Past</span>
+          <h3>Kingdom Come: Bible Study</h3>
+          <p class="event-card-meta">Saturday, January 18, 2025</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 5 — OUR VALUES
+     To hide: add class="hidden" to the section tag
+══════════════════════════════════════ -->
+<section id="values">
+  <div class="container">
+    <p class="eyebrow">What We're Built On</p>
+    <h2>Our Values</h2>
+    <p class="lead">These aren't just things we say — they're the DNA of how The Net shows up.</p>
+    <div class="values-grid">
+      <div class="val-item">
+        <div class="val-num">01</div>
+        <div class="val-title">God <span>Is</span> Central</div>
+        <p class="val-desc">Everything we do flows from a genuine love for God — not a religious checklist, but a real relationship that shapes who we are.</p>
+      </div>
+      <div class="val-item">
+        <div class="val-num">02</div>
+        <div class="val-title">Every Background <span>Belongs</span></div>
+        <p class="val-desc">Different cultures, careers, and stories aren't just tolerated — they're what make The Net stronger. No one checks anything at the door.</p>
+      </div>
+      <div class="val-item">
+        <div class="val-num">03</div>
+        <div class="val-title">Genuine <span>Community</span></div>
+        <p class="val-desc">Real connection isn't a side effect of what we do — it's the whole point. We exist to close the gap for believers who feel isolated.</p>
+      </div>
+      <div class="val-item">
+        <div class="val-num">04</div>
+        <div class="val-title">Faith <span>in Real Life</span></div>
+        <p class="val-desc">We celebrate what it looks like to follow God on a Tuesday, in every career and every city — not just in a Sunday service.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 6 — REAL PEOPLE. REAL FAITH.
+     To hide: add class="hidden" to the section tag
+══════════════════════════════════════ -->
+<section id="stories" style="background:var(--navy-800); padding-block:clamp(4rem,9vw,6.5rem);">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" style="margin-bottom:.3rem;">Community Voices</p>
+        <h2 style="margin:0;">Real People. Real Faith.</h2>
+      </div>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">The NET helped me grow in my faith consistently and feel part of a real community online.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">WW</div>
+          <div>
+            <div class="testimonial-name">Wade Warren</div>
+            <div class="testimonial-role">Community Member</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 7 — WORSHIP PLAYLISTS
+     To hide: add class="hidden" to the section tag
+══════════════════════════════════════ -->
+<section id="worship" style="padding-block:clamp(4rem,9vw,6.5rem);">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow eyebrow-gold" style="margin-bottom:.3rem;">Worship</p>
+        <h2 style="margin:0;">Music for the Journey</h2>
+      </div>
+    </div>
+    <p class="lead" style="max-width:560px; margin-bottom:2rem;">Curated worship playlists from our gatherings — for your commute, your Monday morning, or whenever you need to reconnect.</p>
+    <div class="embed-ph">
+      <!-- PASTE YOUR SPOTIFY OR YOUTUBE IFRAME HERE -->
+      [Paste Spotify or YouTube playlist embed here]
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 8 — PARTNERS  (hidden)
+     To show: remove class="hidden"
+══════════════════════════════════════ -->
+<section id="partners" class="hidden" style="background:var(--navy-800); padding-block:clamp(4rem,9vw,6.5rem);">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" style="margin-bottom:.3rem;">Allied Organizations</p>
+        <h2 style="margin:0;">Partners</h2>
+      </div>
+    </div>
+    <p style="color:var(--cream-dim); max-width:500px; margin-bottom:2rem;">Distinct organizations we stand alongside — same heart, different expressions.</p>
+    <ul class="partner-strip">
+      <li>The Right Side</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 9 — JOIN / SIGNUP
+     To hide: add class="hidden" to the section tag
+══════════════════════════════════════ -->
+<section id="signup">
+  <div class="container">
+    <div class="signup-grid">
+      <div class="signup-text">
+        <p class="eyebrow eyebrow-gold">Get Involved</p>
+        <h2>Join the Community</h2>
+        <p>Drop your details and we'll keep you in the loop on gatherings, stories, and what's next. No spam — just the good stuff.</p>
+      </div>
+      <div>
+        <form class="form-grid" id="signup-form" onsubmit="handleSignup(event)">
+          <div class="form-grid form-2col">
+            <div class="field">
+              <label for="s-name">Name</label>
+              <input type="text" id="s-name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="s-email">Email</label>
+              <input type="email" id="s-email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-gold" id="s-btn">Count Me In</button>
+          </div>
+        </form>
+        <div class="form-msg ok" id="signup-ok" style="display:none;">
+          ✓ You're in! We'll keep you in the loop on everything coming up.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ FOOTER ══════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/the_net_logo.png" alt="The Net" />
+        <p class="footer-tagline">Every Background. One Net.</p>
+        <p class="footer-about">An online faith community and gathering space where believers of every background come together to grow, connect, and be inspired. No zip code required.</p>
+        <div class="footer-social">
+          <a class="soc-icon" href="#" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="3"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a class="soc-icon" href="#" aria-label="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a class="soc-icon" href="#" aria-label="TikTok">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.65a8.22 8.22 0 004.79 1.53V6.72a4.85 4.85 0 01-1.02-.03z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <nav>
+          <a href="#events">Events</a>
+          <a href="#worship">Worship</a>
+          <a href="#stories">Stories</a>
+          <a href="#values">Our Values</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <nav>
+          <a href="#signup">Join the Community</a>
+          <a href="#events">Upcoming Events</a>
+          <a href="#">Instagram</a>
+          <a href="#">YouTube</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>&copy; 2026 The Net. All rights reserved.</span>
+      <span>No zip code required.</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════
+     SEMINAR MODAL — full registration form
+══════════════════════════════════════ -->
+<div class="modal-bg" id="seminar-modal" onclick="closeSeminarOnBg(event)">
+  <div class="modal" style="max-width:600px;">
+    <button class="modal-close" onclick="closeSeminarModal()" aria-label="Close">✕</button>
+    <span class="tag tag-coming" style="margin-bottom:1rem; display:inline-block;">Coming Soon</span>
+    <h2 style="color:var(--white); margin-bottom:.3rem;">The Revelation Seminar</h2>
+    <p style="color:var(--teal-light); font-size:.88rem; font-weight:600; margin-bottom:.9rem;">Saturday, July 4th · Online / Zoom</p>
+
+    <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1rem;">
+      <div style="display:flex; align-items:center; gap:.4rem; color:var(--cream-dim); font-size:.85rem;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Saturday, July 4th
+      </div>
+      <div style="display:flex; align-items:center; gap:.4rem; color:var(--cream-dim); font-size:.85rem;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Time TBC
+      </div>
+      <div style="display:flex; align-items:center; gap:.4rem; color:var(--cream-dim); font-size:.85rem;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Online · Zoom
+      </div>
+    </div>
+
+    <p style="color:var(--cream-dim); line-height:1.65; margin-bottom:1.5rem; font-size:.95rem;">
+      A deep dive into the Book of Revelation — unpacking prophecy, the beasts of Daniel, the seven seals, and what it all means for us today. Topics and schedule are still being finalised. Sign up and we'll get back to you with all the details once everything is confirmed.
+    </p>
+
+    <form id="seminar-form" onsubmit="handleSeminarSignup(event)">
+      <div class="form-grid form-2col">
+
+        <div class="field">
+          <label for="sem-first">First Name *</label>
+          <input type="text" id="sem-first" name="firstName" placeholder="Jane" required />
+        </div>
+        <div class="field">
+          <label for="sem-last">Last Name *</label>
+          <input type="text" id="sem-last" name="lastName" placeholder="Doe" required />
+        </div>
+        <div class="field">
+          <label for="sem-email">Email *</label>
+          <input type="email" id="sem-email" name="email" placeholder="jane@email.com" required />
+        </div>
+        <div class="field">
+          <label for="sem-phone">Phone</label>
+          <input type="tel" id="sem-phone" name="phone" placeholder="+1 (000) 000-0000" />
+        </div>
+
+        <div class="field form-full">
+          <label>Will you attend? *</label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="willAttend" value="Yes" required /> Yes, I'll be there</label>
+            <label class="radio-opt"><input type="radio" name="willAttend" value="No" /> No, not this time</label>
+          </div>
+        </div>
+
+        <div class="field form-full">
+          <label for="sem-heard">How did you hear about us?</label>
+          <select id="sem-heard" name="heardFrom" onchange="toggleReferral(this.value)">
+            <option value="" disabled selected>Select an option</option>
+            <option>Instagram</option>
+            <option>TikTok</option>
+            <option>YouTube</option>
+            <option value="Friends / Referral">Friends / Referral</option>
+            <option>Facebook</option>
+            <option>Google Search</option>
+            <option>Another community or church</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field form-full" id="referral-field" style="display:none;">
+          <label for="sem-referral">Who referred you?</label>
+          <input type="text" id="sem-referral" name="referral" placeholder="Their name" />
+        </div>
+
+        <div class="field form-full">
+          <label for="sem-comments">Any comments?</label>
+          <textarea id="sem-comments" name="comments" placeholder="Anything you'd like us to know…"></textarea>
+        </div>
+
+        <div class="form-full">
+          <button type="submit" class="btn btn-gold" id="sem-btn">Sign Up</button>
+        </div>
+
+      </div>
+    </form>
+
+    <div class="form-msg ok" id="seminar-ok" style="display:none;">
+      ✓ You're signed up! We'll reach out as soon as the seminar topics and Zoom link are confirmed.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ PAST EVENT MODAL ══════════════════════════════════════ -->
+<div class="modal-bg" id="event-modal" onclick="closeModalOnBg(event)">
+  <div class="modal" style="max-width:520px;">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <span class="tag tag-past" style="margin-bottom:1rem; display:inline-block;">Past Event</span>
+    <h2 id="modal-title" style="color:var(--white); margin-bottom:.3rem;"></h2>
+    <p id="modal-meta" style="color:var(--teal-light); font-size:.88rem; font-weight:600; margin-bottom:.6rem;"></p>
+    <p id="modal-desc" style="color:var(--cream-dim); line-height:1.7; margin-bottom:1.5rem;"></p>
+    <div style="border-top:1px solid var(--navy-600); padding-top:1.4rem;">
+      <p style="color:var(--cream); font-weight:600; margin-bottom:.25rem;">Want to join the next one?</p>
+      <p style="color:var(--cream-dim); font-size:.9rem; margin-bottom:1rem;">We run similar events regularly. Drop your details and we'll notify you when we host another gathering like this one.</p>
+      <form id="past-notify-form" onsubmit="handlePastNotify(event)">
+        <div class="form-grid">
+          <div class="field">
+            <label for="pn-name">Name *</label>
+            <input type="text" id="pn-name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="pn-email">Email *</label>
+            <input type="email" id="pn-email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div>
+            <button type="submit" class="btn btn-gold" id="pn-btn">Notify Me for Future Events</button>
+          </div>
+        </div>
+      </form>
+      <div class="form-msg ok" id="past-notify-ok" style="display:none;">
+        ✓ You're on the list! We'll let you know when we host a similar gathering.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // ── GOOGLE SHEETS ─────────────────────────────────────
+  // Replace with your Apps Script Web App URL after setup:
+  const SHEETS_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+  async function postToSheets(data) {
+    if (SHEETS_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return;
+    try {
+      await fetch(SHEETS_URL, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, timestamp: new Date().toISOString() })
+      });
+    } catch (e) {}
+  }
+
+  // ── HOMEPAGE SIGNUP ──────────────────────────────────
+  async function handleSignup(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('s-btn');
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    await postToSheets({ source: 'Homepage Signup', name: form.name.value, email: form.email.value });
+    form.style.display = 'none';
+    document.getElementById('signup-ok').style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('event-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeModalOnBg(e) {
+    if (e.target === document.getElementById('event-modal')) closeModal();
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeSeminarModal(); }
+  });
+
+  // ── PAST EVENT NOTIFY FORM ───────────────────────────
+  function openEventModal(title, meta, desc) {
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-meta').textContent = meta;
+    document.getElementById('modal-desc').textContent = desc;
+    // reset notify form each time
+    const frm = document.getElementById('past-notify-form');
+    frm.style.display = '';
+    frm.reset();
+    document.getElementById('past-notify-ok').style.display = 'none';
+    document.getElementById('pn-btn').textContent = 'Notify Me for Future Events';
+    document.getElementById('pn-btn').disabled = false;
+    document.getElementById('event-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  async function handlePastNotify(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('pn-btn');
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    const title = document.getElementById('modal-title').textContent;
+    await postToSheets({
+      source: 'Future Event Notify',
+      eventReference: title,
+      name: form.name.value,
+      email: form.email.value
+    });
+    form.style.display = 'none';
+    document.getElementById('past-notify-ok').style.display = 'block';
+  }
+
+  // ── SEMINAR SIGNUP MODAL ─────────────────────────────
+  function openSeminarModal() {
+    document.getElementById('seminar-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSeminarModal() {
+    document.getElementById('seminar-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeSeminarOnBg(e) {
+    if (e.target === document.getElementById('seminar-modal')) closeSeminarModal();
+  }
+  function toggleReferral(val) {
+    const field = document.getElementById('referral-field');
+    field.style.display = val === 'Friends / Referral' ? '' : 'none';
+    if (val !== 'Friends / Referral') document.getElementById('sem-referral').value = '';
+  }
+
+  async function handleSeminarSignup(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('sem-btn');
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    const fd = new FormData(form);
+    await postToSheets({
+      source: 'Revelation Seminar Signup',
+      firstName: fd.get('firstName'),
+      lastName: fd.get('lastName'),
+      email: fd.get('email'),
+      phone: fd.get('phone'),
+      willAttend: fd.get('willAttend'),
+      heardFrom: fd.get('heardFrom'),
+      referral: fd.get('referral') || '',
+      comments: fd.get('comments')
+    });
+    form.style.display = 'none';
+    document.getElementById('seminar-ok').style.display = 'block';
+  }
+
+
+</script>
+
+</body>
+</html>
