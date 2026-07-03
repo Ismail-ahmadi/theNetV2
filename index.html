@@ -3,8 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Net — Every Background. One Net.</title>
-  <meta name="description" content="An online faith community where believers of every background come together to grow, connect, and encounter God. No zip code required." />
+
+  <!-- ══ PRIMARY SEO ══ -->
+  <title>The Net Community — Online Faith Community | Every Background. One Net.</title>
+  <meta name="description" content="The Net is a high-energy online faith community where believers of every background come together to worship, grow, and connect. Join events, seminars, and fellowship online. No zip code required." />
+  <meta name="keywords" content="online faith community, christian community online, online church, faith events, bible study online, worship online, young adults faith, online fellowship, revelation seminar, believers community" />
+  <meta name="author" content="The Net Community" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://thenetconnect.org/" />
+
+  <!-- ══ OPEN GRAPH (Facebook, WhatsApp, LinkedIn previews) ══ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thenetconnect.org/" />
+  <meta property="og:title" content="The Net Community — Every Background. One Net." />
+  <meta property="og:description" content="A high-energy online faith community where believers of every background come together to worship, grow, and connect. Join us for events, seminars, and genuine fellowship — no zip code required." />
+  <meta property="og:image" content="https://thenetconnect.org/assets/the_net_logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="The Net Community" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ══ TWITTER / X CARD ══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://thenetconnect.org/" />
+  <meta name="twitter:title" content="The Net Community — Every Background. One Net." />
+  <meta name="twitter:description" content="A high-energy online faith community where believers of every background come together to worship, grow, and connect. No zip code required." />
+  <meta name="twitter:image" content="https://thenetconnect.org/assets/the_net_logo.png" />
+
+  <!-- ══ STRUCTURED DATA (Google rich results) ══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "The Net Community",
+    "url": "https://thenetconnect.org",
+    "logo": "https://thenetconnect.org/assets/the_net_logo.png",
+    "description": "The Net is an online faith community and event space where believers of every background come together to grow, connect, and be inspired in their walk with God.",
+    "sameAs": [],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Community",
+      "url": "https://thenetconnect.org/#signup"
+    },
+    "event": {
+      "@type": "Event",
+      "name": "All Nations Unite — Revelation Seminar",
+      "startDate": "2026-07-03T18:30:00-05:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+      "location": {
+        "@type": "VirtualLocation",
+        "url": "https://thenetconnect.org/#events"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "The Net Community",
+        "url": "https://thenetconnect.org"
+      },
+      "description": "A global gathering of believers — All Nations Unite Revelation Seminar. Join us online for a powerful evening unpacking the Book of Revelation.",
+      "image": "https://thenetconnect.org/assets/revelation_seminar.webp"
+    }
+  }
+  </script>
+
+  <!-- ══ FONTS ══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -275,7 +337,7 @@
      SECTION 1 — HERO
      To hide: add class="hidden" to the section tag
 ══════════════════════════════════════ -->
-<section id="hero">
+<section id="hero" aria-label="Welcome">
   <div class="hero-net" aria-hidden="true"></div>
   <div class="container hero-content">
     <div class="hero-tag">
@@ -304,7 +366,7 @@
      SECTION 2 — MANIFESTO
      To hide: add class="hidden" to the section tag
 ══════════════════════════════════════ -->
-<section id="manifesto">
+<section id="manifesto" aria-label="Our Mission">
   <div class="container">
     <p class="manifesto-text">
       We exist to<br />
@@ -323,7 +385,7 @@
      SECTION 3 — WHO WE ARE
      To hide: add class="hidden" to the section tag
 ══════════════════════════════════════ -->
-<section id="who">
+<section id="who" aria-label="Who We Are">
   <div class="container">
     <div class="who-grid">
       <div class="who-text">
@@ -349,7 +411,7 @@
      SECTION 4 — EVENTS
      To hide: add class="hidden" to the section tag
 ══════════════════════════════════════ -->
-<section id="events">
+<section id="events" aria-label="Events">
   <div class="container">
     <div class="sec-head">
       <div>
@@ -516,7 +578,7 @@
      SECTION 5 — OUR VALUES
      To hide: add class="hidden" to the section tag
 ══════════════════════════════════════ -->
-<section id="values">
+<section id="values" aria-label="Our Values">
   <div class="container">
     <p class="eyebrow">What We're Built On</p>
     <h2>Our Values</h2>
@@ -551,7 +613,7 @@
      SECTION 6 — REAL PEOPLE. REAL FAITH.
      To hide: add class="hidden" to the section tag
 ══════════════════════════════════════ -->
-<section id="stories" style="background:var(--navy-800); padding-block:clamp(4rem,9vw,6.5rem);">
+<section id="stories" aria-label="Community Voices" style="background:var(--navy-800); padding-block:clamp(4rem,9vw,6.5rem);">
   <div class="container">
     <div class="sec-head">
       <div>
@@ -606,7 +668,7 @@
      SECTION 7 — WORSHIP PLAYLISTS
      To hide: add class="hidden" to the section tag
 ══════════════════════════════════════ -->
-<section id="worship" style="padding-block:clamp(4rem,9vw,6.5rem);">
+<section id="worship" aria-label="Worship" style="padding-block:clamp(4rem,9vw,6.5rem);">
   <div class="container">
     <div class="sec-head">
       <div>
@@ -647,7 +709,7 @@
      SECTION 9 — JOIN / SIGNUP
      To hide: add class="hidden" to the section tag
 ══════════════════════════════════════ -->
-<section id="signup">
+<section id="signup" aria-label="Join the Community">
   <div class="container">
     <div class="signup-grid">
       <div class="signup-text">
